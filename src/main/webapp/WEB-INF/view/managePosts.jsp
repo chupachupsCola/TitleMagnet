@@ -11,6 +11,7 @@
 </head>
 <body>
 	<h1>投稿の管理</h1>
+	<p><a href="logout">ログアウト</a></p>
 	<table border="1">
 		<tr>
 			<th>新規投稿</th>
