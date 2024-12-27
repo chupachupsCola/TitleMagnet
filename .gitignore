@@ -1,0 +1,31 @@
+# Eclipse settings
+.project
+.classpath
+.settings/
+
+# Java build output
+/bin/
+# Maven build output (if using Maven)
+target/
+
+# Eclipse server-specific files (if using Tomcat, for example)
+.metadata/.plugins/org.eclipse.wst.server.core/tmp0/
+
+# Java compiler temporary files
+*.log
+*.tmp
+
+# IDE-generated temporary files
+*.bak
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# If using Maven (ignore the default maven directory)
+.idea/
+
+# Gradle build output (if using Gradle)
+.gradle/
+build/
