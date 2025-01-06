@@ -11,38 +11,39 @@
 </head>
 <body>
 	<h1>投稿の管理</h1>
+	<c:if test="${empty posts}">
+	<p>未承認の新規投稿はありません。</p>
+	</c:if>
 	<p><a href="logout">ログアウト</a></p>
-	<table border="1">
-		<tr>
-			<th>新規投稿</th>
-			<th>操作</th>
-		</tr>
-		<c:forEach items="${posts}" var="post">
-		<tr>
-			<td>
-				<p>タイトル:
-					<c:out value="${post.title}" />
-					
-					<c:forEach items="${idList}" var="id">
-					<c:if test="${id == post.id}">
-					<span>※既に登録されています</span>
-					</c:if>
-					</c:forEach>
-				</p>
-				<p>出典作品名:
-					<c:out value="${post.source}" />
-				</p>
-			</td>
-			<td>
-				<c:forEach items="${idList}" var="id">
-				<c:if test="${id != post.id}">
-				<a href="editPost?id=<c:out value="${post.id}" />">編集</a>
-				</c:if>
-				</c:forEach>
-				<a href="deletePost?id=<c:out value="${post.id}" />">削除</a>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
+	<c:if test="${!empty posts}">
+		<table border="1">
+			<tr>
+				<th>新規投稿</th>
+				<th>操作</th>
+			</tr>
+			<c:forEach items="${posts}" var="post">
+			<tr>
+				<td>
+					<p>
+						タイトル:<c:out value="${post.title}" />
+
+						<c:if test="${idList.contains(post.id)}">
+						<span>※既に登録されています</span>
+						</c:if>
+					</p>
+					<p>
+						出典作品名:<c:out value="${post.source}" />
+					</p>
+				</td>
+				<td>
+					<c:if test="${!idList.contains(post.id)}">
+					<a href="editPost?id=<c:out value="${post.id}" />">編集</a>
+					</c:if> 
+					<a href="deletePost?id=<c:out value="${post.id}" />">削除</a>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>
