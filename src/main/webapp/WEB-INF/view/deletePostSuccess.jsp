@@ -4,15 +4,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
-<script src="<%= request.getContextPath() %>/js/bootstrap.bundle.min.js" defer></script>
+    <meta charset="UTF-8">
+    <title>投稿削除完了</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<%= request.getContextPath() %>/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
-	<h1>投稿の削除</h1>
-	<p>投稿の削除が完了しました。</p>
-	<p><a href="managePosts">未承認の投稿一覧に戻る</a></p>
+    <div class="container mt-5">
+        <!-- 成功メッセージ -->
+        <div class="alert alert-light text-dark text-center" role="alert">
+            投稿は正常に削除されました。
+        </div>
+
+        <!-- 次のアクションのリンク（左寄せ） -->
+        <div class="text-start mt-4">
+            <a href="managePosts">未承認の投稿一覧に戻る</a>
+        </div>
+    </div>
 </body>
 </html>

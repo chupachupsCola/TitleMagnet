@@ -13,7 +13,7 @@ import dao.DaoFactory;
 import dto.Post;
 
 
-@WebServlet("/")
+@WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
