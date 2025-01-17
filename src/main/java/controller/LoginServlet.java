@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 						.forward(request, response);
 				return;
 			}
-			// パスワード:nayuta0108
+			
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("loginId", loginId);

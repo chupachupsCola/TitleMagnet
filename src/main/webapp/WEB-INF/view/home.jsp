@@ -1,56 +1,87 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="navbar.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ホームページ</title>
+    <title>カルーセルとポップアップ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     <script src="<%= request.getContextPath() %>/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
-    <!-- カルーセル -->
-    <div id="myCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <!-- 最初のスライド -->
-            <c:forEach var="i" begin="0" end="7">
-                <c:if test="${i % 4 == 0}">
-                    <div class="carousel-item ${i == 0 ? 'active' : ''}">
-                        <div class="row">
-                </c:if>
+    <!-- 複数のカルーセル -->
+    <c:forEach var="carouselIndex" begin="1" end="${approvedPosts.size()}">
+        <div id="carousel${carouselIndex}" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <c:set var="startIndex" value="${(carouselIndex - 1) * 8}" />
+                <c:set var="endIndex" value="${carouselIndex * 8}" />
 
-                <!-- カード表示 -->
-                <div class="col-6 col-md-3">
-                    <div class="card">
-                        <img src="https://source.unsplash.com/400x300?${i+1}" class="card-img-top" alt="画像">
-                        <div class="card-body">
-                            <h5 class="card-title">カードタイトル${i+1}</h5>
-                            <p class="card-text">カード内容${i+1}の簡単な説明。</p>
-                            <a href="#" class="btn btn-primary">詳細を見る</a>
+                <c:forEach var="post" items="${approvedPosts}" varStatus="status">
+                    <c:if test="${status.index >= startIndex && status.index < endIndex}">
+                        <c:choose>
+                            <c:when test="${(status.index - startIndex) % 4 == 0}">
+                                <div class="carousel-item ${status.index == startIndex ? 'active' : ''}">
+                                    <div class="row">
+                            </c:when>
+                        </c:choose>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">${post.title}</h5>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-outline-secondary" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#postModal${status.index}">
+                                        詳細を見る
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
+                        <c:choose>
+                            <c:when test="${(status.index - startIndex + 1) % 4 == 0 || status.index == endIndex - 1}">
+                                    </div>
+                                </div>
+                            </c:when>
+                        </c:choose>
+                    </c:if>
+                </c:forEach>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel${carouselIndex}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">前へ</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel${carouselIndex}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">次へ</span>
+            </button>
+        </div>
+    </c:forEach>
+
+    <!-- モーダル -->
+    <c:forEach var="post" items="${approvedPosts}" varStatus="status">
+        <div class="modal fade" id="postModal${status.index}" tabindex="-1" aria-labelledby="postModalLabel${status.index}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="postModalLabel${status.index}">${post.title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>投稿者:</strong> ${post.author}</p>
+                        <p><strong>リンク:</strong> <a href="${post.url}" target="_blank">${post.url}</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div>
                 </div>
-
-                <!-- 4つ目のアイテムを終わらせ、新しいスライドに移行 -->
-                <c:if test="${i % 4 == 3 || i == 7}">
-                    </div> <!-- .row -->
-                    </div> <!-- .carousel-item -->
-                </c:if>
-            </c:forEach>
+            </div>
         </div>
-
-        <!-- カルーセルのナビゲーション -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">前へ</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">次へ</span>
-        </button>
-    </div>
+    </c:forEach>
 </body>
 </html>
