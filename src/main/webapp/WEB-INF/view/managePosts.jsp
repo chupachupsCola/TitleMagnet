@@ -34,13 +34,13 @@
 							<tr>
 								<td>
 									<p>
-										<strong>タイトル:</strong> <c:out value="${post.title}" />
+										<strong>作品タイトル:</strong> <c:out value="${post.title}" />
 										<c:if test="${idList.contains(post.id)}">
 											<span class="text-muted">※既に登録されています</span>
 										</c:if>
 									</p>
 									<p>
-										<strong>出典作品名:</strong> <c:out value="${post.source}" />
+										<strong>集名(表題):</strong> <c:out value="${post.source}" />
 									</p>
 								</td>
 								<td>

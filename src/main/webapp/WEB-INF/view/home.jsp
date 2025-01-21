@@ -5,7 +5,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>カルーセルとポップアップ</title>
+    <title>TitleMagnet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     <script src="<%= request.getContextPath() %>/js/bootstrap.bundle.min.js" defer></script>
@@ -69,12 +69,15 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <p><a href="${post.url}" target="_blank" class="btn btn-outline-secondary"><img src="${post.imageUrl}" class="img-fluid mb-3" alt="${post.title}"></a></p>
                         <h5 class="modal-title" id="postModalLabel${status.index}">${post.title}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
-                    <div class="modal-body">
-                        <p><strong>投稿者:</strong> ${post.author}</p>
-                        <p><strong>リンク:</strong> <a href="${post.url}" target="_blank">${post.url}</a></p>
+                    <div class="modal-body"> 
+                    	<c:if test="${!empty post.source}">
+                    	<p><strong>表題 : </strong><c:out value="${post.source}" /></p>
+                    	</c:if>  	
+                    	<p><strong>著者 : </strong><c:out value="${post.author}" /></p>
+                    	<p><strong>出版社 : </strong><c:out value="${post.publisherName}" /></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -83,5 +86,27 @@
             </div>
         </div>
     </c:forEach>
+    <style>
+    .card-body button {
+        z-index: 1050;
+        position: relative;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        z-index: 1000;
+    }
+    
+    .modal-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-header img {
+        max-width: 100%;
+        height: auto;
+    }   
+</style>
 </body>
 </html>

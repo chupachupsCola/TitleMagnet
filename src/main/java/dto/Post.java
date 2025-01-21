@@ -17,4 +17,5 @@ public class Post {
 	private String author;
 	private String publisherName;
 	private String url;
+	private String imageUrl;
 }

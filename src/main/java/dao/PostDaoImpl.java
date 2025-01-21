@@ -80,7 +80,7 @@ public class PostDaoImpl implements PostDao{
 	public void update(Post post) throws Exception {
 		try (Connection con = ds.getConnection()) {
 			String sql = "UPDATE posts "
-					   + "SET title=?, source=?, author=?, publisher_name=?, url=? "
+					   + "SET title=?, source=?, author=?, publisher_name=?, url=?, imageUrl=? "
 					   + "where id=?";
 			var stmt = con.prepareStatement(sql);
 			stmt.setString(1, post.getTitle());
@@ -88,7 +88,8 @@ public class PostDaoImpl implements PostDao{
 			stmt.setString(3, post.getAuthor());
 			stmt.setString(4, post.getPublisherName());
 			stmt.setString(5, post.getUrl());
-			stmt.setInt(6,post.getId());
+			stmt.setString(6, post.getImageUrl());
+			stmt.setInt(7,post.getId());
 			
 			stmt.executeUpdate();
 		}
@@ -113,6 +114,7 @@ public class PostDaoImpl implements PostDao{
 				   .author(rs.getString("author"))
 				   .publisherName(rs.getString("publisher_name"))
 				   .url(rs.getString("url"))
+				   .imageUrl(rs.getString("imageUrl"))
 				   .build();
 	}
 

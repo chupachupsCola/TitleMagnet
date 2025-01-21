@@ -6,7 +6,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>フォーム</title>
+    <title>TitleMagnet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     <script src="<%= request.getContextPath() %>/js/bootstrap.bundle.min.js" defer></script>
@@ -17,14 +17,14 @@
             <h1 class="text-center mb-4">投稿する</h1>
             <form action="" method="post">
                 <div class="mb-3">
-                    <label for="title" class="form-label">タイトル:</label>
+                    <label for="title" class="form-label">作品タイトル:</label>
                     <input type="text" class="form-control" name="title" id="title" value="<c:out value="${title}" />">
                     <div class="text-danger mt-2"><c:out value="${error}" /></div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="source" class="form-label">出典作品名:</label>
-                    <input type="text" class="form-control" name="source" id="source" value="<c:out value="${source}" />">
+                    <label for="source" class="form-label">集名(表題):</label>
+                    <input type="text" class="form-control" name="source" id="source" value="<c:out value="${source}" />" placeholder="投稿タイトルと一致する場合は、入力不要です。">
                 </div>
 
                 <!-- ボタンを左下に配置 -->

@@ -17,7 +17,7 @@
         <form action="" method="post">
             <!-- タイトル -->
             <div class="mb-3">
-                <label for="title" class="form-label">タイトル:</label>
+                <label for="title" class="form-label">作品タイトル:</label>
                 <input type="text" id="title" name="title" class="form-control" 
                        value="<c:out value="${!empty post ? post.title : (!empty inputs ? inputs.title : '')}" />">
                 <div class="text-danger"><c:out value="${errors.title}" /></div>
@@ -25,7 +25,7 @@
 
             <!-- 出典作品名 -->
             <div class="mb-3">
-                <label for="source" class="form-label">出典作品名:</label>
+                <label for="source" class="form-label">集名(表題):</label>
                 <input type="text" id="source" name="source" class="form-control" 
                        value="${!empty post ? post.source : (!empty inputs ? inputs.source : '')}">
                 <div class="text-danger"><c:out value="${errors.source}" /></div>
@@ -53,6 +53,13 @@
                 <input type="text" id="url" name="url" class="form-control" 
                        value="${!empty inputs ? inputs.url : ''}">
                 <div class="text-danger"><c:out value="${errors.url}" /></div>
+            </div>
+            <!-- 画像 -->
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">画像:</label>
+                <input type="text" id="imageUrl" name="imageUrl" class="form-control" 
+                       value="${!empty inputs ? inputs.imageUrl : ''}">
+                <div class="text-danger"><c:out value="${errors.imageUrl}" /></div>
             </div>
         <!-- フォーム外でボタンを配置 -->
         <div class="text-start">

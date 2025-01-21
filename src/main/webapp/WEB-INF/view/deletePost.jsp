@@ -16,11 +16,11 @@
 
         <table class="table">
             <tr>
-                <th>タイトル</th>
+                <th>作品タイトル</th>
                 <td><c:out value="${post.title}" /></td>
             </tr>
             <tr>
-                <th>出典作品名</th>
+                <th>集名(表題)</th>
                 <td><c:out value="${post.source}" /></td>
             </tr>
         </table>

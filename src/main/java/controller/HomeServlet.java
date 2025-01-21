@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,8 @@ import dto.Post;
 public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Post> approvedPosts = DaoFactory.createPostDao().readAllApproved();
+			List<Post> approvedPosts = DaoFactory.createPostDao().readAllApproved();;
+			Collections.shuffle(approvedPosts);
 			request.setAttribute("approvedPosts", approvedPosts);
 			request.getRequestDispatcher("/WEB-INF/view/home.jsp")
 					.forward(request, response);

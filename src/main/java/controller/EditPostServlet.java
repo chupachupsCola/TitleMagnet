@@ -31,7 +31,7 @@ public class EditPostServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String> inputs = collectParams(request, "id", "title", "source", "author", "publisherName",
-				"url");
+				"url", "imageUrl");
 		try {
 			Map<String, String> errors = validate(inputs);
 			if (errors.size() > 0) {
@@ -49,6 +49,7 @@ public class EditPostServlet extends HttpServlet {
 					.author(inputs.get("author"))
 					.publisherName(inputs.get("publisherName"))
 					.url(inputs.get("url"))
+					.imageUrl(inputs.get("imageUrl"))
 					.build();
 			DaoFactory.createPostDao().update(post);
 			request.getRequestDispatcher("/WEB-INF/view/editPostSuccess.jsp")
@@ -69,8 +70,8 @@ public class EditPostServlet extends HttpServlet {
 	private Map<String, String> validate(Map<String, String> inputs) throws Exception {
 		Map<String, String> errors = new HashMap<>();
 		
-		String[] fieldNames = {"title", "author", "publisherName", "url"};
-		String[] fieldLabels = {"タイトル", "著者名", "出典作品名", "URL"}; 
+		String[] fieldNames = {"title", "author", "publisherName", "url", "imageUrl"};
+		String[] fieldLabels = {"タイトル", "著者名", "出典作品名", "URL", "画像リンク"}; 
 		for(int i = 0; i < fieldNames.length; i++) {
 			if(inputs.get(fieldNames[i]).isBlank()) {
 				errors.put(fieldNames[i],fieldLabels[i] + "が未入力");
