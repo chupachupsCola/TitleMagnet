@@ -28,12 +28,12 @@
                         </c:choose>
 
                         <div class="col-6 col-md-3">
-                            <div class="card">
-                                <div class="card-body">
+                            <div class="card" style="height: 130px; object-fit: cover;">
+                                <div class="card-body position-relative">
                                     <h5 class="card-title">${post.title}</h5>
                                     <button 
                                         type="button" 
-                                        class="btn btn-outline-secondary" 
+                                        class="btn btn-outline-secondary position-absolute bottom-0 mb-2" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#postModal${status.index}">
                                         詳細を見る

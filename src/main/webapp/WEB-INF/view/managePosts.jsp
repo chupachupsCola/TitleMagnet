@@ -23,7 +23,7 @@
 			<div class="card">
 				<div class="card-body">
 					<table class="table table-bordered table-hover">
-						<thead>
+						<thead class="text-center">
 							<tr>
 								<th>新規投稿</th>
 								<th>操作</th>
@@ -43,10 +43,8 @@
 										<strong>集名(表題):</strong> <c:out value="${post.source}" />
 									</p>
 								</td>
-								<td>
-									<c:if test="${!idList.contains(post.id)}">
-										<a href="editPost?id=<c:out value="${post.id}" />" class="btn btn-outline-secondary btn-sm">編集</a>
-									</c:if> 
+								<td class="text-center">
+									<a href="editPost?id=<c:out value="${post.id}" />" class="btn btn-outline-secondary btn-sm <c:out value="${idList.contains(post.id) ? 'disabled-link' : ''}" />">編集</a>
 									<a href="deletePost?id=<c:out value="${post.id}" />" class="btn btn-outline-secondary btn-sm">削除</a>
 								</td>
 							</tr>
@@ -58,4 +56,12 @@
 		</c:if>
 	</div>
 </body>
+<style>
+    .disabled-link {
+        pointer-events: none;
+        color: gray;
+        background-color: #e0e0e0;
+        border-color: #dcdcdc;
+    }
+</style>
 </html>

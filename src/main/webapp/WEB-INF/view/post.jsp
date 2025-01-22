@@ -14,7 +14,7 @@
 <body>
     <div class="container d-flex justify-content-center mt-5">
         <div class="w-50">
-            <h1 class="text-center mb-4">投稿する</h1>
+            <h1 class="text-center mb-3">投稿する</h1>
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="title" class="form-label">作品タイトル:</label>
@@ -24,14 +24,21 @@
 
                 <div class="mb-3">
                     <label for="source" class="form-label">集名(表題):</label>
-                    <input type="text" class="form-control" name="source" id="source" value="<c:out value="${source}" />" placeholder="投稿タイトルと一致する場合は、入力不要です。">
+                    <input type="text" class="form-control" name="source" id="source" value="<c:out value="${source}" />" placeholder="作品タイトルと一致する場合は、入力不要です。">
                 </div>
 
-                <!-- ボタンを左下に配置 -->
+                <!-- 送信ボタン -->
                 <div class="d-flex justify-content-start mt-4">
                     <button type="submit" class="btn btn-outline-secondary">送信</button>
                 </div>
             </form>
+                
+            <!-- フォームの下部に説明文を追加 -->
+            <p class="mt-4">
+    			* 小説のタイトルを短編に絞り募集しています。<br>
+    			* 表題に限らず、収録作品のタイトルも歓迎です。<br>
+    			* 思わずタイトル買いしたくなる魅力的なものをお待ちしています。
+            </p>
         </div>
     </div>
 </body>

@@ -12,9 +12,6 @@
                     <a class="nav-link <%= request.getRequestURI().endsWith("/home.jsp") ? "active" : "" %>" aria-current="page" href="<%= request.getContextPath() %>/home">トップページ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= request.getRequestURI().endsWith("/intro.jsp") ? "active" : "" %>" href="<%= request.getContextPath() %>/intro">TitleMagnetとは</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link <%= request.getRequestURI().endsWith("/post.jsp") ? "active" : "" %>" href="<%= request.getContextPath() %>/post">投稿する</a>
                 </li>
             </ul>
