@@ -39,7 +39,8 @@ public class ManagePostsServlet extends HttpServlet {
 		List<Integer> idList = new ArrayList<>();
 		for(Post unapprovedPost: unapprovedPosts) {
 			for(Post approvedPost : approvedPosts) {
-				if(approvedPost.getTitle().equals(unapprovedPost.getTitle())) {
+				if(approvedPost.getTitle().equals(unapprovedPost.getTitle()) && 
+				   approvedPost.getSource().equals(unapprovedPost.getSource())) {
 					idList.add(unapprovedPost.getId());
 				}
 			}

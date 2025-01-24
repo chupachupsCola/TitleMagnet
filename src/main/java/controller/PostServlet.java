@@ -23,7 +23,7 @@ public class PostServlet extends HttpServlet {
 			String title = request.getParameter("title");
 			String source = request.getParameter("source");
 
-			String error = validate(title);
+			String error = validate(title, source);
 			if (error != null) {
 				request.setAttribute("title", title);
 				request.setAttribute("source", source);
@@ -46,10 +46,10 @@ public class PostServlet extends HttpServlet {
 			}
 		}
 
-	private String validate(String title) {
+	private String validate(String title, String source) {
 		String error = null;
-		if(title.isBlank()) {
-			error = "タイトルが未入力です";
+		if(title.isBlank() && source.isBlank()) {
+			error = "入力項目がすべて未入力です。";
 		}
 		return error;
 	}

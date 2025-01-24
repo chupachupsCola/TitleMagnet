@@ -15,11 +15,11 @@
     <div class="container d-flex justify-content-center mt-5">
         <div class="w-50">
             <h1 class="text-center mb-3">投稿する</h1>
+                    <div class="text-center text-danger mt-2"><c:out value="${error}" /></div>
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="title" class="form-label">作品タイトル:</label>
                     <input type="text" class="form-control" name="title" id="title" value="<c:out value="${title}" />">
-                    <div class="text-danger mt-2"><c:out value="${error}" /></div>
                 </div>
 
                 <div class="mb-3">

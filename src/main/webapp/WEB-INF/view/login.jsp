@@ -14,7 +14,7 @@
 	<div class="container mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
-				<h1 class="text-center">ログイン画面</h1>
+				<h1 class="text-center">管理者ログイン</h1>
 				<p class="text-danger text-center"><c:out value="${error}" /></p>
 				<p class="text-danger text-center"><c:out value="${errors.loginId}" /></p>
 				<p class="text-danger text-center"><c:out value="${errors.loginPass}" /></p>

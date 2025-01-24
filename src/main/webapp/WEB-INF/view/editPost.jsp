@@ -20,7 +20,6 @@
                 <label for="title" class="form-label">作品タイトル:</label>
                 <input type="text" id="title" name="title" class="form-control" 
                        value="<c:out value="${!empty post ? post.title : (!empty inputs ? inputs.title : '')}" />">
-                <div class="text-danger"><c:out value="${errors.title}" /></div>
             </div>
 
             <!-- 出典作品名 -->
@@ -28,7 +27,6 @@
                 <label for="source" class="form-label">集名(表題):</label>
                 <input type="text" id="source" name="source" class="form-control" 
                        value="${!empty post ? post.source : (!empty inputs ? inputs.source : '')}">
-                <div class="text-danger"><c:out value="${errors.source}" /></div>
             </div>
 
             <!-- 著者名 -->

@@ -35,13 +35,13 @@
 								<td>
 									<p>
 										<strong>作品タイトル:</strong> <c:out value="${post.title}" />
-										<c:if test="${idList.contains(post.id)}">
-											<span class="text-muted">※既に登録されています</span>
-										</c:if>
 									</p>
 									<p>
 										<strong>集名(表題):</strong> <c:out value="${post.source}" />
 									</p>
+									<c:if test="${idList.contains(post.id)}">
+									<span class="text-muted">※既に登録されています</span>
+									</c:if>
 								</td>
 								<td class="text-center">
 									<a href="editPost?id=<c:out value="${post.id}" />" class="btn btn-outline-secondary btn-sm <c:out value="${idList.contains(post.id) ? 'disabled-link' : ''}" />">編集</a>

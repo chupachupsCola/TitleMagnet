@@ -70,8 +70,8 @@ public class EditPostServlet extends HttpServlet {
 	private Map<String, String> validate(Map<String, String> inputs) throws Exception {
 		Map<String, String> errors = new HashMap<>();
 		
-		String[] fieldNames = {"title", "author", "publisherName", "url", "imageUrl"};
-		String[] fieldLabels = {"タイトル", "著者名", "出典作品名", "URL", "画像リンク"}; 
+		String[] fieldNames = {"author", "publisherName", "url", "imageUrl"};
+		String[] fieldLabels = {"著者名", "出典作品名", "URL", "画像リンク"}; 
 		for(int i = 0; i < fieldNames.length; i++) {
 			if(inputs.get(fieldNames[i]).isBlank()) {
 				errors.put(fieldNames[i],fieldLabels[i] + "が未入力");

@@ -30,7 +30,10 @@
                         <div class="col-6 col-md-3">
                             <div class="card" style="height: 130px; object-fit: cover;">
                                 <div class="card-body position-relative">
-                                    <h5 class="card-title">${post.title}</h5>
+                                    <h5 class="card-title">
+                                    	<c:if test="${!empty post.title}"><c:out value="${post.title}" /></c:if>
+                        				<c:if test="${empty post.title}"><c:out value="${post.source}" /></c:if>
+                                    </h5>
                                     <button 
                                         type="button" 
                                         class="btn btn-outline-secondary position-absolute bottom-0 mb-2" 
@@ -70,11 +73,17 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <p><a href="${post.url}" target="_blank" class="btn btn-outline-secondary"><img src="${post.imageUrl}" class="img-fluid mb-3" alt="${post.title}"></a></p>
-                        <h5 class="modal-title" id="postModalLabel${status.index}">${post.title}</h5>
+                        <h5 class="modal-title" id="postModalLabel${status.index}">
+                        	<c:if test="${!empty post.title}"><c:out value="${post.title}" /></c:if>
+                        	<c:if test="${empty post.title}"><c:out value="${post.source}" /></c:if>
+                        </h5>
                     </div>
                     <div class="modal-body"> 
                     	<c:if test="${!empty post.source}">
                     	<p><strong>表題 : </strong><c:out value="${post.source}" /></p>
+                    	</c:if>  	
+                    	<c:if test="${empty post.source}">
+                    	<p><strong>表題 : </strong><c:out value="${post.title}" /></p>
                     	</c:if>  	
                     	<p><strong>著者 : </strong><c:out value="${post.author}" /></p>
                     	<p><strong>出版社 : </strong><c:out value="${post.publisherName}" /></p>
