@@ -26,7 +26,7 @@
 						<input type="password" name="loginPass" id="loginPass" class="form-control" placeholder="パスワード">
 					</div>
 					<div class="text-center">
-						<button type="submit" class="btn btn-dark w-100">ログイン</button>
+						<button type="submit" class="btn btn-secondary w-100">ログイン</button>
 					</div>
 				</form>
 			</div>

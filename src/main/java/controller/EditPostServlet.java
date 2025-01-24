@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -71,21 +70,12 @@ public class EditPostServlet extends HttpServlet {
 		Map<String, String> errors = new HashMap<>();
 		
 		String[] fieldNames = {"author", "publisherName", "url", "imageUrl"};
-		String[] fieldLabels = {"著者名", "出典作品名", "URL", "画像リンク"}; 
+		String[] fieldLabels = {"著者名", "出版社", "URL", "画像リンク"}; 
 		for(int i = 0; i < fieldNames.length; i++) {
 			if(inputs.get(fieldNames[i]).isBlank()) {
 				errors.put(fieldNames[i],fieldLabels[i] + "が未入力");
 			}
-		}
-		
-		List<Post> approvedPosts = DaoFactory.createPostDao().readAllApproved();
-		for(Post post : approvedPosts) {
-			if(inputs.get("title").equals(post.getTitle())) {
-				errors.put("title", "既に登録されています");
-				break;
-			}
-		}
-		
+		}		
 		return errors;
 	}
 }
